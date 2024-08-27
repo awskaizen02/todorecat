@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    tools {
+        nodejs 'nodejs'
+    }
+
+    stages {
+        stage('scm') {
+            steps {
+                git url:"https://github.com/awskaizen02/todorecat/",branch:"master"
+            }
+        }
+       stage('Npm Install') {
+            steps {
+               bat 'npm install'
+            }
+        }
+         stage('Npm Build') {
+            steps {
+               bat 'npm run build'
+            }    
+         }    
+        stage('Npm Start') {
+            steps {
+               bat 'npm start'
+            }    
+         }
+    }
+}

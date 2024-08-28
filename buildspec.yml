@@ -5,17 +5,14 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo "Installing dependencies using node 18"
-      - npm ci 
-      - echo "Done installing dependencies ====>"
+      - npm install      
   build:
     commands:
-      - echo "Building the React Project"
       - npm run build
-      - echo "Done building the project ==> Exporting artifcats"
+      - npm install -g serve
 
 artifacts:
   files:
     - '**/*'
   discard-paths: no
-  base-directory: dist
+  base-directory: build
